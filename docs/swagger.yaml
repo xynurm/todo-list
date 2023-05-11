@@ -1,0 +1,98 @@
+basePath: /api/v1
+definitions:
+  models.User:
+    properties:
+      email:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      password:
+        type: string
+    type: object
+  models.UserRequest:
+    properties:
+      email:
+        type: string
+      name:
+        type: string
+      password:
+        type: string
+    type: object
+host: localhost:5000
+info:
+  contact:
+    email: support@swagger.io
+    name: API Support
+    url: http://www.swagger.io/support
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  title: Go + Gin SWAG
+  version: "1.0"
+paths:
+  /login:
+    post:
+      consumes:
+      - application/json
+      description: Login
+      parameters:
+      - description: Login
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/models.User'
+      produces:
+      - application/json
+      responses: {}
+      summary: Login
+  /register:
+    post:
+      consumes:
+      - application/json
+      description: create user
+      parameters:
+      - description: Create user
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/models.UserRequest'
+      produces:
+      - application/json
+      responses: {}
+      summary: Create a new user
+  /user/{id}:
+    delete:
+      operationId: delete-user-by-id
+      parameters:
+      - description: user ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      summary: delete a user by ID
+    get:
+      operationId: get-user-by-id
+      parameters:
+      - description: user ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      summary: get a user item by ID
+  /users:
+    get:
+      produces:
+      - application/json
+      responses: {}
+      summary: CRUD  GET ALLUSER
+swagger: "2.0"
